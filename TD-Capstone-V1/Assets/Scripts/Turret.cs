@@ -1,8 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class Turret : MonoBehaviour
-{
+public class Turret : MonoBehaviour {
 
 	private Transform target;
 	private Enemy targetEnemy;
@@ -36,12 +35,11 @@ public class Turret : MonoBehaviour
 	public Transform firePoint;
 
 	// Use this for initialization
-	void Start()
-	{
+	void Start () {
 		InvokeRepeating("UpdateTarget", 0f, 0.5f);
 	}
-
-	void UpdateTarget()
+	
+	void UpdateTarget ()
 	{
 		GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
 		float shortestDistance = Mathf.Infinity;
@@ -60,8 +58,7 @@ public class Turret : MonoBehaviour
 		{
 			target = nearestEnemy.transform;
 			targetEnemy = nearestEnemy.GetComponent<Enemy>();
-		}
-		else
+		} else
 		{
 			target = null;
 		}
@@ -69,8 +66,7 @@ public class Turret : MonoBehaviour
 	}
 
 	// Update is called once per frame
-	void Update()
-	{
+	void Update () {
 		if (target == null)
 		{
 			if (useLaser)
@@ -91,8 +87,7 @@ public class Turret : MonoBehaviour
 		if (useLaser)
 		{
 			Laser();
-		}
-		else
+		} else
 		{
 			if (fireCountdown <= 0f)
 			{
@@ -105,7 +100,7 @@ public class Turret : MonoBehaviour
 
 	}
 
-	void LockOnTarget()
+	void LockOnTarget ()
 	{
 		Vector3 dir = target.position - transform.position;
 		Quaternion lookRotation = Quaternion.LookRotation(dir);
@@ -113,7 +108,7 @@ public class Turret : MonoBehaviour
 		partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
 	}
 
-	void Laser()
+	void Laser ()
 	{
 		targetEnemy.TakeDamage(damageOverTime * Time.deltaTime);
 		targetEnemy.Slow(slowAmount);
@@ -135,7 +130,7 @@ public class Turret : MonoBehaviour
 		impactEffect.transform.rotation = Quaternion.LookRotation(dir);
 	}
 
-	void Shoot()
+	void Shoot ()
 	{
 		GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
 		Bullet bullet = bulletGO.GetComponent<Bullet>();
@@ -144,7 +139,7 @@ public class Turret : MonoBehaviour
 			bullet.Seek(target);
 	}
 
-	void OnDrawGizmosSelected()
+	void OnDrawGizmosSelected ()
 	{
 		Gizmos.color = Color.red;
 		Gizmos.DrawWireSphere(transform.position, range);

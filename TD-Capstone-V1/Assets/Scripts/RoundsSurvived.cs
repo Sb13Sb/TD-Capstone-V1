@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RoundsSurvived : MonoBehaviour
-{
+public class RoundsSurvived : MonoBehaviour {
 
 	public Text roundsText;
 
@@ -13,7 +12,7 @@ public class RoundsSurvived : MonoBehaviour
 		StartCoroutine(AnimateText());
 	}
 
-	IEnumerator AnimateText()
+	IEnumerator AnimateText ()
 	{
 		roundsText.text = "0";
 		int round = 0;

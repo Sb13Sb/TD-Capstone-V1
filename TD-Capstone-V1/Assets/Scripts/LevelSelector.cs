@@ -1,14 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LevelSelector : MonoBehaviour
-{
+public class LevelSelector : MonoBehaviour {
 
 	public SceneFader fader;
 
 	public Button[] levelButtons;
 
-	void Start()
+	void Start ()
 	{
 		int levelReached = PlayerPrefs.GetInt("levelReached", 1);
 
@@ -19,7 +18,7 @@ public class LevelSelector : MonoBehaviour
 		}
 	}
 
-	public void Select(string levelName)
+	public void Select (string levelName)
 	{
 		fader.FadeTo(levelName);
 	}

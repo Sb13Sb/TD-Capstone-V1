@@ -1,8 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Enemy : MonoBehaviour
-{
+public class Enemy : MonoBehaviour {
 
 	public float startSpeed = 10f;
 
@@ -21,13 +20,13 @@ public class Enemy : MonoBehaviour
 
 	private bool isDead = false;
 
-	void Start()
+	void Start ()
 	{
 		speed = startSpeed;
 		health = startHealth;
 	}
 
-	public void TakeDamage(float amount)
+	public void TakeDamage (float amount)
 	{
 		health -= amount;
 
@@ -39,12 +38,12 @@ public class Enemy : MonoBehaviour
 		}
 	}
 
-	public void Slow(float pct)
+	public void Slow (float pct)
 	{
 		speed = startSpeed * (1f - pct);
 	}
 
-	void Die()
+	void Die ()
 	{
 		isDead = true;
 
