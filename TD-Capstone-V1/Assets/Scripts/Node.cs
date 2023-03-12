@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Node : MonoBehaviour {
+public class Node : MonoBehaviour
+{
 
 	public Color hoverColor;
 	public Color notEnoughMoneyColor;
-    public Vector3 positionOffset;
+	public Vector3 positionOffset;
 
 	[HideInInspector]
 	public GameObject turret;
@@ -19,20 +20,20 @@ public class Node : MonoBehaviour {
 
 	BuildManager buildManager;
 
-	void Start ()
+	void Start()
 	{
 		rend = GetComponent<Renderer>();
 		startColor = rend.material.color;
 
 		buildManager = BuildManager.instance;
-    }
+	}
 
-	public Vector3 GetBuildPosition ()
+	public Vector3 GetBuildPosition()
 	{
 		return transform.position + positionOffset;
 	}
 
-	void OnMouseDown ()
+	void OnMouseDown()
 	{
 		if (EventSystem.current.IsPointerOverGameObject())
 			return;
@@ -49,7 +50,7 @@ public class Node : MonoBehaviour {
 		BuildTurret(buildManager.GetTurretToBuild());
 	}
 
-	void BuildTurret (TurretBlueprint blueprint)
+	void BuildTurret(TurretBlueprint blueprint)
 	{
 		if (PlayerStats.Money < blueprint.cost)
 		{
@@ -70,7 +71,7 @@ public class Node : MonoBehaviour {
 		Debug.Log("Turret build!");
 	}
 
-	public void UpgradeTurret ()
+	public void UpgradeTurret()
 	{
 		if (PlayerStats.Money < turretBlueprint.upgradeCost)
 		{
@@ -95,7 +96,7 @@ public class Node : MonoBehaviour {
 		Debug.Log("Turret upgraded!");
 	}
 
-	public void SellTurret ()
+	public void SellTurret()
 	{
 		PlayerStats.Money += turretBlueprint.GetSellAmount();
 
@@ -106,7 +107,7 @@ public class Node : MonoBehaviour {
 		turretBlueprint = null;
 	}
 
-	void OnMouseEnter ()
+	void OnMouseEnter()
 	{
 		if (EventSystem.current.IsPointerOverGameObject())
 			return;
@@ -117,16 +118,17 @@ public class Node : MonoBehaviour {
 		if (buildManager.HasMoney)
 		{
 			rend.material.color = hoverColor;
-		} else
+		}
+		else
 		{
 			rend.material.color = notEnoughMoneyColor;
 		}
 
 	}
 
-	void OnMouseExit ()
+	void OnMouseExit()
 	{
 		rend.material.color = startColor;
-    }
+	}
 
 }

@@ -2,7 +2,8 @@ using UnityEngine;
 using System.Collections;
 
 [RequireComponent(typeof(Enemy))]
-public class EnemyMovement : MonoBehaviour {
+public class EnemyMovement : MonoBehaviour
+{
 
 	private Transform target;
 	private int wavepointIndex = 0;
@@ -44,7 +45,6 @@ public class EnemyMovement : MonoBehaviour {
 	void EndPath()
 	{
 		PlayerStats.Lives--;
-		WaveSpawner.EnemiesAlive--;
 		Destroy(gameObject);
 	}
 

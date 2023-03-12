@@ -1,6 +1,7 @@
 using UnityEngine;
 
-public class Shop : MonoBehaviour {
+public class Shop : MonoBehaviour
+{
 
 	public TurretBlueprint standardTurret;
 	public TurretBlueprint missileLauncher;
@@ -8,12 +9,12 @@ public class Shop : MonoBehaviour {
 
 	BuildManager buildManager;
 
-	void Start ()
+	void Start()
 	{
 		buildManager = BuildManager.instance;
 	}
 
-	public void SelectStandardTurret ()
+	public void SelectStandardTurret()
 	{
 		Debug.Log("Standard Turret Selected");
 		buildManager.SelectTurretToBuild(standardTurret);

@@ -1,10 +1,11 @@
 using UnityEngine;
 
-public class BuildManager : MonoBehaviour {
+public class BuildManager : MonoBehaviour
+{
 
 	public static BuildManager instance;
 
-	void Awake ()
+	void Awake()
 	{
 		if (instance != null)
 		{
@@ -25,7 +26,7 @@ public class BuildManager : MonoBehaviour {
 	public bool CanBuild { get { return turretToBuild != null; } }
 	public bool HasMoney { get { return PlayerStats.Money >= turretToBuild.cost; } }
 
-	public void SelectNode (Node node)
+	public void SelectNode(Node node)
 	{
 		if (selectedNode == node)
 		{
@@ -45,13 +46,13 @@ public class BuildManager : MonoBehaviour {
 		nodeUI.Hide();
 	}
 
-	public void SelectTurretToBuild (TurretBlueprint turret)
+	public void SelectTurretToBuild(TurretBlueprint turret)
 	{
 		turretToBuild = turret;
 		DeselectNode();
 	}
 
-	public TurretBlueprint GetTurretToBuild ()
+	public TurretBlueprint GetTurretToBuild()
 	{
 		return turretToBuild;
 	}
