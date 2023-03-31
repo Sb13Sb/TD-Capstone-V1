@@ -1,12 +1,15 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
 
 	public static bool GameIsOver;
 
-	public GameObject gameOverUI;
+    public GameObject gameOverUI;
+
+	public bool IfTrainer;
 
 	void Start()
 	{
@@ -16,11 +19,25 @@ public class GameManager : MonoBehaviour
 	void Update()
 	{
 		if (GameIsOver)
-			return;
+        {
+		return;
+        }
 
-		if (PlayerStats.Lives <= 0)
+		if (IfTrainer == false)
 		{
-			EndGame();
+			Debug.Log("IfTrainer is false");
+			if (PlayerStats.Rounds > 0 && PlayerStats.Rounds % 6 == 0)
+            {
+                Debug.Log("Loading scene 3");
+				SceneManager.LoadScene(3);
+			}
+			
+		}
+
+
+        if (PlayerStats.Lives <= 0)
+		{
+		EndGame();
 		}
 	}
 

@@ -9,6 +9,7 @@ public class Trainer : MonoBehaviour
     public GameObject targetPrefab;
     public static Trainer instance;
     public static bool gameOver;
+    public static bool IfTrainer;
     public static int targetsHit = 0, targetsMissed = 0, accuracy;
 
     public TextMeshProUGUI targetsHitLbl, targetsMissedLbl, accuracyLbl;
@@ -18,6 +19,7 @@ public class Trainer : MonoBehaviour
         Spawntargets();
         gameOver = false;
         instance = this;
+        IfTrainer = false;
     }
 
     private void Update()
@@ -36,6 +38,7 @@ public class Trainer : MonoBehaviour
         targetsMissedLbl.text = "Missed: " + targetsMissed;
         accuracyLbl.text = "Accuracy: " + accuracy.ToString() + "%";
     }
+
 
     public void Spawntargets()
     {

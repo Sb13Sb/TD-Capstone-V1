@@ -1,9 +1,11 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class WaveSpawner : MonoBehaviour
 {
+	public SceneFader sceneFader;
 
 	public Transform enemyPrefab;
 
@@ -27,19 +29,26 @@ public class WaveSpawner : MonoBehaviour
 		countdown -= Time.deltaTime;
 
 		countdown = Mathf.Clamp(countdown, 0f, Mathf.Infinity);
-
-		waveCountdownText.text = string.Format("{0:00.00}", countdown);
 	}
 
 	IEnumerator SpawnWave()
 	{
-		waveIndex++;
-		PlayerStats.Rounds++;
-
-		for (int i = 0; i < waveIndex; i++)
+		if (SceneManager.GetActiveScene().name == "SpecialRound")
 		{
-			SpawnEnemy();
-			yield return new WaitForSeconds(0.5f);
+			yield return new WaitForSeconds(60f);
+		}
+		else
+		{
+			waveIndex++;
+			PlayerStats.Rounds++;
+
+			for (int i = 0; i < waveIndex; i++)
+			{
+
+				SpawnEnemy();
+				yield return new WaitForSeconds(0.5f);
+
+			}
 		}
 	}
 
