@@ -25,10 +25,8 @@ public class GameManager : MonoBehaviour
 
 		if (IfTrainer == false)
 		{
-			Debug.Log("IfTrainer is false");
 			if (PlayerStats.Rounds > 0 && PlayerStats.Rounds % 6 == 0)
             {
-                Debug.Log("Loading scene 3");
 				SceneManager.LoadScene(3);
 			}
 			

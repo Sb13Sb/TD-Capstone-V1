@@ -13,7 +13,7 @@ public class PlayerStats : MonoBehaviour
     public static int Rounds;
     public int startRounds = 0;
 
-    void Start()
+    void Update()
     {
         if (Rounds == 0)
         {
@@ -23,28 +23,29 @@ public class PlayerStats : MonoBehaviour
         }
         else
         {
-            UpdatedStats();
+                int currentMoney = PlayerPrefs.GetInt("Money");
+                Money = currentMoney;
+                int bonusPoints = 0;
+
+                if (Trainer.accuracy >= 80)
+                {
+                    bonusPoints = 200;
+                }
+                else if (Trainer.accuracy < 60 || Trainer.accuracy > 80)
+                {
+                    bonusPoints = 100;
+                }
+                else
+                {
+                    bonusPoints = 100;
+                }
+                int newMoney = currentMoney + bonusPoints;
+                PlayerPrefs.SetInt("Money", newMoney);
+                newMoney = Money;
+                PlayerPrefs.Save();
+
         }
 
     }
-    void UpdatedStats()
-    {
-        int currentMoney = PlayerPrefs.GetInt("Money");
-
-        int Money = currentMoney;
-        PlayerPrefs.SetInt("Money", Money);
-        PlayerPrefs.Save();
-
-        int currentLives = PlayerPrefs.GetInt("Lives");
-
-        int Lives = currentLives;
-        PlayerPrefs.SetInt("Lives", Lives);
-        PlayerPrefs.Save();
-
-        int currentRounds = PlayerPrefs.GetInt("Rounds");
-
-        int Rounds = currentRounds;
-        PlayerPrefs.SetInt("Rounds", Rounds);
-        PlayerPrefs.Save();
-    }
+    
 }

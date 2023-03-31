@@ -33,12 +33,6 @@ public class WaveSpawner : MonoBehaviour
 
 	IEnumerator SpawnWave()
 	{
-		if (SceneManager.GetActiveScene().name == "SpecialRound")
-		{
-			yield return new WaitForSeconds(60f);
-		}
-		else
-		{
 			waveIndex++;
 			PlayerStats.Rounds++;
 
@@ -49,7 +43,6 @@ public class WaveSpawner : MonoBehaviour
 				yield return new WaitForSeconds(0.5f);
 
 			}
-		}
 	}
 
 	void SpawnEnemy()
