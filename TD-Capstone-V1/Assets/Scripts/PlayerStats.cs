@@ -21,10 +21,12 @@ public class PlayerStats : MonoBehaviour
             Lives = startLives;
             Rounds = startRounds;
         }
-        else
+        /*else
         {
-                int currentMoney = PlayerPrefs.GetInt("Money");
-                Money = currentMoney;
+            int currentMoney = 0;
+            currentMoney = PlayerPrefs.GetInt("Money");
+            PlayerPrefs.SetInt("Money", Money);
+            Money = currentMoney;
                 int bonusPoints = 0;
 
                 if (Trainer.accuracy >= 80)
@@ -41,10 +43,10 @@ public class PlayerStats : MonoBehaviour
                 }
                 int newMoney = currentMoney + bonusPoints;
                 PlayerPrefs.SetInt("Money", newMoney);
-                newMoney = Money;
+                newMoney = Money; 
                 PlayerPrefs.Save();
 
-        }
+        }*/
 
     }
     

@@ -33,16 +33,18 @@ public class PauseMenu : MonoBehaviour
 	public void Retry()
 	{
 		Toggle();
-		sceneFader.FadeTo(SceneManager.GetActiveScene().name);
+        sceneFader.FadeTo(SceneManager.GetActiveScene().name);
+		PlayerStats.Rounds = 0;
 	}
 
-	public void Menu()
+    public void Menu()
 	{
 		Toggle();
 		sceneFader.FadeTo("MainMenu");
+		PlayerStats.Rounds = 0;
 	}
 
-	public void Settings()
+    public void Settings()
 	{
 		Toggle();
 		sceneFader.FadeTo("Settings");
